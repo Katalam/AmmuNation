@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * The permission bit flags.
+ */
+define('_CREATE_INVITE_CODE', 1);
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -18,6 +23,7 @@ class User extends Authenticatable
     protected $fillable = [
         'username',
         'password',
+        'permissions'
     ];
 
     /**
@@ -29,4 +35,13 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    /**
+     * Is allowed to create a new invite code.
+     *
+     * @return bool
+     */
+    public function allowedInviteCodeCreation() {
+        return $this->permissions & _CREATE_INVITE_CODE;
+    }
 }
