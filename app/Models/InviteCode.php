@@ -15,8 +15,13 @@ class InviteCode extends Model
      * @var array
      */
     protected $fillable = [
-        'created_by_id',
-        'used_by_id',
+        'created_by',
+        'used_by',
         'code'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'used_by');
+    }
 }

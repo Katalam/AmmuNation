@@ -24,8 +24,8 @@ class InviteCodeFactory extends Factory
     public function definition()
     {
         return [
-            'created_by_id' => null,
-            'used_by_id' => null,
+            'created_by' => null,
+            'used_by' => null,
             'code' => Str::random(5)
         ];
     }

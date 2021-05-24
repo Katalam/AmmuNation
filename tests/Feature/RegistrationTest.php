@@ -31,7 +31,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $code = InviteCode::find($code->id);
-        $this->assertTrue($code->used_by_id != null);
+        $this->assertTrue($code->used_by != null);
 
         $this->assertAuthenticated();
         $response->assertRedirect(RouteServiceProvider::HOME);
@@ -42,7 +42,7 @@ class RegistrationTest extends TestCase
         $code = InviteCode::factory()->create();
         $user = User::factory()->create();
 
-        $code->used_by_id = $user->id;
+        $code->used_by = $user->id;
         $code->save();
 
         $response = $this->post('/register', [

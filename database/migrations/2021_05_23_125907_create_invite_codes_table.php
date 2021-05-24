@@ -16,15 +16,15 @@ class CreateInviteCodesTable extends Migration
     {
         Schema::create('invite_codes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('created_by_id')->nullable()->constrained('users');
-            $table->foreignId('used_by_id')->nullable()->constrained('users');
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('used_by')->nullable()->constrained('users');
             $table->string('code');
             $table->timestamps();
         });
 
         InviteCode::create([
-            'created_by_id' => null,
-            'used_by_id' => null,
+            'created_by' => null,
+            'used_by' => null,
             'code' => 'aaaaa'
         ])->save();
     }

@@ -22,6 +22,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/invite_code', [InviteCodeController::class, 'index'])->middleware(['auth'])->name('invite_code');
+Route::get('/invite_code', [InviteCodeController::class, 'index'])->middleware(['auth'])->name('invite_code.index');
+Route::delete('/invite_code/{invite_code}', [InviteCodeController::class, 'destroy'])->middleware(['auth'])->name('invite_code.destroy');
 
 require __DIR__.'/auth.php';

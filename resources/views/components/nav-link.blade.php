@@ -1,11 +1,10 @@
 @props(['active'])
 
 @php
-$classes = ($active ?? false)
-            ? 'inline-flex items-center px-1 pt-1 border-b-2 border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out'
-            : 'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out';
+$classes = 'inline-flex items-center px-1 pt-1 text-sm font-semibold leading-5 text-white focus:outline-none transition duration-150 ease-in-out';
 @endphp
 
-<a {{ $attributes->merge(['class' => $classes]) }}>
+<a {{ $attributes->merge(['class' => $classes, 'x-data' => '{ hover: false, force:' . ($active ? 'true' : 'false') . '}']) }} @mouseover="hover = true" @mouseover.away="hover = false">
     {{ $slot }}
+    <div class="relative right-1/2 top-1/3 h-1 rounded-md w-8 transition duration-150 ease-in-out" :class="{ 'bg-white': hover || force }"></div>
 </a>

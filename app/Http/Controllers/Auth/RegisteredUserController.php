@@ -41,7 +41,7 @@ class RegisteredUserController extends Controller
         ]);
 
         $code = InviteCode::firstWhere('code', $request->invite_code);
-        if ($code->used_by_id != null) {
+        if ($code->used_by != null) {
             return redirect('/register')
                 ->withErrors(['Code already used'])
                 ->withInput();
@@ -52,7 +52,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $code->used_by_id = $user->id;
+        $code->used_by = $user->id;
         $code->save();
 
         event(new Registered($user));
