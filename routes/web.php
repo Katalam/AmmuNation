@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\InviteCodeController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,9 @@ Route::get('/', [DashboardController::class, 'index'])
     ->middleware(['auth'])
     ->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/customer', [CustomerController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('customer.index');
 
 Route::get('/product', [ProductController::class, 'index'])
     ->middleware(['auth'])

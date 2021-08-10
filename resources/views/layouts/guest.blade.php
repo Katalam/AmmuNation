@@ -19,7 +19,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
-<body class="bg-gray-50 antialiased bg-gradient-to-r from-red-400 via-red-500 to-red-600 min-h-screen font-sans">
+<body class="bg-gray-50 antialiased bg-red-800 min-h-screen font-sans">
     {{ $slot }}
 </body>
 

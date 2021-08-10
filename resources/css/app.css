@@ -5,3 +5,7 @@
 [x-cloak] {
     display: none;
 }
+
+.table-row {
+    @apply h-20 text-sm leading-none text-gray-700 border-b border-t border-gray-200 bg-white hover:bg-gray-100
+}
