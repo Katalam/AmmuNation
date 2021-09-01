@@ -15,11 +15,11 @@ class CustomerIndex extends Component
         if ($this->input != null)
         {
             $searchTerm = '%' . $this->input . '%';
-            $this->customers = Customer::where('name', 'like', $searchTerm)->get();
+            $this->customers = Customer::where('name', 'like', $searchTerm)->orderBy('name')->get();
         }
         else
         {
-            $this->customers = Customer::all();
+            $this->customers = Customer::orderBy('name')->get();
         }
         return view('livewire.customer-index');
     }
