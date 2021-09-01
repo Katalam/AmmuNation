@@ -34,6 +34,7 @@ Route::get('/product', [ProductController::class, 'index'])
     ->name('product.index');
 
 Route::get('/invite_code', [InviteCodeController::class, 'index'])->middleware(['auth'])->name('invite_code.index');
+Route::post('/invite_code', [InviteCodeController::class, 'store'])->middleware(['auth'])->name('invite_code.store');
 Route::delete('/invite_code/{invite_code}', [InviteCodeController::class, 'destroy'])->middleware(['auth'])->name('invite_code.destroy');
 
 require __DIR__.'/auth.php';

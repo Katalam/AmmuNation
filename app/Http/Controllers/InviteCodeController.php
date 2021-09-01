@@ -15,8 +15,7 @@ class InviteCodeController extends Controller
      */
     public function index(Request $request)
     {
-        if (!$request->user()->allowedInviteCodeCreation())
-        {
+        if (!$request->user()->allowedInviteCodeCreation()) {
             abort(403);
         }
         return view('invite_code.index');
@@ -31,12 +30,29 @@ class InviteCodeController extends Controller
      */
     public function destroy(InviteCode $invite_code, Request $request)
     {
-        if (!$request->user()->allowedInviteCodeCreation())
-        {
+        if (!$request->user()->allowedInviteCodeCreation()) {
             abort(403);
         }
         if ($invite_code->used_by != null) return;
         $invite_code->delete();
+        return redirect(route('invite_code.index'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        if (!$request->user()->allowedInviteCodeCreation()) {
+            abort(403);
+        }
+        $invite_code = InviteCode::create([
+            'code' => ''
+        ]);
+        $invite_code->generateCode();
         return redirect(route('invite_code.index'));
     }
 }

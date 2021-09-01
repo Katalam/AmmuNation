@@ -16,9 +16,12 @@
                         </div>
                         @if(auth()->user()->allowedInviteCodeCreation())
                         <div class="flex items-center mt-4 md:mt-0 md:ml-3 lg:ml-0">
-                            <button class="inline-flex ml-1.5 items-start justify-start px-6 py-3 bg-red-700 hover:bg-red-600 focus:outline-none rounded">
-                                <p class="text-sm font-medium leading-none text-white">Add invite code</p>
-                            </button>
+                            <form action="{{ route('invite_code.store') }}" method="POST">
+                                @csrf
+                                <button class="inline-flex ml-1.5 items-start justify-start px-6 py-3 bg-red-700 hover:bg-red-600 focus:outline-none rounded" type="submit">
+                                    <p class="text-sm font-medium leading-none text-white">Add invite code</p>
+                                </button>
+                            </form>
                         </div>
                         @endif
                     </div>
