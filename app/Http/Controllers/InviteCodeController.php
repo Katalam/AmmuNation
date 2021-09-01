@@ -19,8 +19,7 @@ class InviteCodeController extends Controller
         {
             abort(403);
         }
-        $invite_codes = InviteCode::with('user')->orderBy('used_by')->get();
-        return view('invite_code.index', compact('invite_codes'));
+        return view('invite_code.index');
     }
 
     /**
