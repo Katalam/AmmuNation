@@ -1,4 +1,4 @@
-<div class="px-4 xl:px-0">
+<div class="px-4 xl:px-0" x-data="{ 'open': false }">
     <div class="mx-auto container">
         <div class="xl:flex">
             <div class="xl:w-3/4 2xl:w-4/5 -mt-8 xl:-mt-44">
@@ -15,7 +15,7 @@
                             </div>
                         </div>
                         <div class="flex items-center mt-4 md:mt-0 md:ml-3 lg:ml-0">
-                            <button class="inline-flex ml-1.5 items-start justify-start px-6 py-3 bg-red-700 hover:bg-red-600 focus:outline-none rounded">
+                            <button class="inline-flex ml-1.5 items-start justify-start px-6 py-3 bg-red-700 hover:bg-red-600 focus:outline-none rounded" @click="open = true">
                                 <p class="text-sm font-medium leading-none text-white">Add Customer</p>
                             </button>
                         </div>
@@ -75,6 +75,28 @@
                     </x-side-bar-element-row>
                 </x-side-bar-element>
             </x-side-bar>
+        </div>
+    </div>
+    <div class="w-full h-full" x-show="open">
+        <div class="bg-overlays w-full py-8 overflow-y-auto h-full fixed flex items-center justify-center top-0 md:px-0 px-4">
+            <div class="bg-white rounded-md w-full overflow-y-auto lg:h-auto h-full sm:w-10/12 md:w-8/12 lg:w-1/2 2xl:w-2/5 relative">
+                <div class="bg-gray-100 rounded-tl-md rounded-tr-md md:px-10 px-4 pt-9 pb-9">
+                    <form action="{{ route('customer.store') }}" method="POST" x-ref="form">
+                        @csrf
+                        <div>
+                            <x-label for="name" :value="__('Name')" />
+                            <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required />
+                        </div>
+                    </form>
+                </div>
+                <div class="pt-3.5 pb-9 md:px-10 px-4 mt-4">
+                    <p class="text-xs leading-4 text-gray-500">Here is your text that can contain useful informations.</p>
+                    <div class="flex items-center justify-between mt-8">
+                        <button class="px-6 py-3 bg-gray-400 hover:bg-gray-500 shadow rounded text-sm text-white" @click="open = false">Close</button>
+                        <button class="px-6 py-3 bg-red-700 hover:bg-opacity-80 shadow rounded text-sm text-white" @click="$refs.form.submit()">Add customer</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

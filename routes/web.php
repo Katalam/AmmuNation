@@ -25,6 +25,10 @@ Route::get('/customer', [CustomerController::class, 'index'])
     ->middleware(['auth'])
     ->name('customer.index');
 
+Route::post('/customer', [CustomerController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('customer.store');
+
 Route::get('/product', [ProductController::class, 'index'])
     ->middleware(['auth'])
     ->name('product.index');
