@@ -15,11 +15,11 @@ class InviteCodeIndex extends Component
         if ($this->input != null)
         {
             $searchTerm = '%' . $this->input . '%';
-            $this->invite_codes = InviteCode::with('user')->where('code', 'like', $searchTerm)->orderBy('used_by')->get();
+            $this->invite_codes = InviteCode::with('user')->where('code', 'like', $searchTerm)->orderByDesc('created_at')->get();
         }
         else
         {
-            $this->invite_codes = InviteCode::with('user')->orderBy('used_by')->get();
+            $this->invite_codes = InviteCode::with('user')->orderByDesc('created_at')->get();
         }
         return view('livewire.invite-code-index');
     }
