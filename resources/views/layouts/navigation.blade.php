@@ -24,6 +24,16 @@
                                 <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
                             </svg>
                         </x-nav-element>
+                        @if(auth()->user()->allowedInviteCodeCreation())
+                        <x-nav-element title="Invite Code" route="invite_code.index">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-plus" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                <path d="M16 11h6m-3 -3v6" />
+                            </svg>
+                        </x-nav-element>
+                        @endif
                     </ul>
                 </div>
             </li>
@@ -81,6 +91,16 @@
                             <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
                         </svg>
                     </x-nav-element-mobile>
+                    @if(auth()->user()->allowedInviteCodeCreation())
+                    <x-nav-element-mobile route="invite_code.index" title="Invite Code">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-plus" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                            <path d="M16 11h6m-3 -3v6" />
+                        </svg>
+                    </x-nav-element-mobile>
+                    @endif
                 </ul>
             </div>
         </div>
