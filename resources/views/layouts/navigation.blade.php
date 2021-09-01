@@ -24,6 +24,14 @@
                                 <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
                             </svg>
                         </x-nav-element>
+                        <x-nav-element title="Product" route="product.index">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <rect x="3" y="4" width="18" height="4" rx="2" />
+                                <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+                                <line x1="10" y1="12" x2="14" y2="12" />
+                            </svg>
+                        </x-nav-element>
                         @if(auth()->user()->allowedInviteCodeCreation())
                         <x-nav-element title="Invite Code" route="invite_code.index">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-plus" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -89,6 +97,14 @@
                             <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                             <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                             <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
+                        </svg>
+                    </x-nav-element-mobile>
+                    <x-nav-element-mobile route="product.index" title="Product">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <rect x="3" y="4" width="18" height="4" rx="2" />
+                            <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+                            <line x1="10" y1="12" x2="14" y2="12" />
                         </svg>
                     </x-nav-element-mobile>
                     @if(auth()->user()->allowedInviteCodeCreation())
