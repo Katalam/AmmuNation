@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -36,6 +37,10 @@ Route::get('/product', [ProductController::class, 'index'])
 Route::post('/product', [ProductController::class, 'store'])
     ->middleware(['auth'])
     ->name('product.store');
+
+Route::get('/cart', [CartController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('cart.index');
 
 Route::get('/invite_code', [InviteCodeController::class, 'index'])
     ->middleware(['auth'])
