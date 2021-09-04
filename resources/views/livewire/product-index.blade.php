@@ -1,4 +1,4 @@
-<div class="px-4 xl:px-0" x-data="{ 'open': false, 'abc': 'test' }">
+<div class="px-4 xl:px-0" x-data="{ 'open': false }">
     <div class="mx-auto container">
         <div class="xl:flex">
             <div class="xl:w-3/4 2xl:w-4/5 -mt-8 xl:-mt-44">
@@ -49,8 +49,9 @@
                                             </div>
                                         </td>
                                         <td>
-                                            /** Edit */
-                                            <!-- <button @click="$refs.name.value = '{{ $product->name }}'; open = true">dd</button> -->
+                                            <button wire:click="addToCart({{ $product->id }})" class="block uppercase font-bold text-green-600 hover:text-green-500 mr-4">
+                                                Add to cart
+                                            </button>
                                         </td>
                                     </tr>
                                     @endforeach
