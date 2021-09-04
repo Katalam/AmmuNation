@@ -24,7 +24,7 @@
     <!-- Header -->
     <div class="pt-6 md:pt-8 xl:pt-12 bg-red-800">
         <div class="mx-auto container px-4 xl:px-0">
-            @include('layouts.navigation')
+            <livewire:navigation />
             <div class="xl:flex items-center flex-wrap">
                 <div class="xl:w-3/4 2xl:w-4/5">
                 </div>

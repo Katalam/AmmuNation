@@ -4,18 +4,18 @@
             <li class="flex items-center w-4/5">
                 <div>
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo />
+                        <x-application-logo-white class="w-16" />
                     </a>
                 </div>
                 <div class="2xl:ml-14">
                     <ul class="flex items-center">
-                        <x-nav-element title="Dashboard" route="dashboard" first="true">
+                        <x-nav-element title="Dashboard" route="dashboard" first="true" :croute="$currentRouteName">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                 <path d="M15.8333 7.2583L11.3892 3.80164C10.9992 3.49823 10.5191 3.3335 10.025 3.3335C9.53087 3.3335 9.05085 3.49823 8.66084 3.80164L4.21584 7.2583C3.94871 7.46604 3.73258 7.73208 3.58397 8.03609C3.43535 8.34011 3.35818 8.67407 3.35834 9.01247V15.0125C3.35834 15.4545 3.53393 15.8784 3.84649 16.191C4.15905 16.5035 4.58298 16.6791 5.025 16.6791H15.025C15.467 16.6791 15.891 16.5035 16.2035 16.191C16.5161 15.8784 16.6917 15.4545 16.6917 15.0125V9.01247C16.6917 8.32664 16.375 7.67914 15.8333 7.2583Z" stroke="#FAFAFA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M13.3334 12.5C11.4917 13.6108 8.50669 13.6108 6.66669 12.5" stroke="#FAFAFA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </x-nav-element>
-                        <x-nav-element title="Customer" route="customer.index">
+                        <x-nav-element title="Customer" route="customer.index" :croute="$currentRouteName">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                 <circle cx="9" cy="7" r="4" />
@@ -24,7 +24,7 @@
                                 <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
                             </svg>
                         </x-nav-element>
-                        <x-nav-element title="Products" route="product.index">
+                        <x-nav-element title="Products" route="product.index" :croute="$currentRouteName">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                 <rect x="3" y="4" width="18" height="4" rx="2" />
@@ -33,7 +33,7 @@
                             </svg>
                         </x-nav-element>
                         @if(auth()->user()->allowedInviteCodeCreation())
-                        <x-nav-element title="Invite Codes" route="invite_code.index">
+                        <x-nav-element title="Invite Codes" route="invite_code.index" :croute="$currentRouteName">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-plus" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                 <circle cx="9" cy="7" r="4" />
@@ -42,6 +42,16 @@
                             </svg>
                         </x-nav-element>
                         @endif
+                        <x-nav-element title="Cart" route="cart.index" :croute="$currentRouteName">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <circle cx="6" cy="19" r="2" />
+                                <circle cx="17" cy="19" r="2" />
+                                <path d="M17 17h-11v-14h-2" />
+                                <path d="M6 5l14 1l-1 7h-13" />
+                            </svg>
+                        </x-nav-element>
+                        <div class="relative bg-white rounded-full bottom-4 text-red-700 text-xs font-bold px-2">{{ $cartTotal }}</div>
                     </ul>
                 </div>
             </li>
@@ -66,7 +76,7 @@
         <div class="flex items-center xl:hidden w-full justify-between">
             <div>
                 <a href="{{ route('dashboard') }}">
-                    <x-application-logo />
+                    <x-application-logo-white class="w-12" />
                 </a>
             </div>
             <div>
@@ -118,6 +128,15 @@
                         </svg>
                     </x-nav-element-mobile>
                     @endif
+                    <x-nav-element-mobile route="cart.index" title="Cart">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <circle cx="6" cy="19" r="2" />
+                            <circle cx="17" cy="19" r="2" />
+                            <path d="M17 17h-11v-14h-2" />
+                            <path d="M6 5l14 1l-1 7h-13" />
+                        </svg>
+                    </x-nav-element-mobile>
                 </ul>
             </div>
         </div>
